@@ -25,7 +25,7 @@ async function register(e) {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
-    const res = await apiRequest('auth/register', 'POST', data);
+    const res = await apiRequest('/auth/register', 'POST', data);
     if (res.ok) {
         alert('Registered successfully!');
         showPage('login');
@@ -49,7 +49,7 @@ async function login(e) {
     const headers = { 'Content-Type': 'application/x-www-form-urlencoded' };
     if (token) headers['Authorization'] = `Bearer ${token}`;
 
-    const res = await fetch(`${API_URL}auth/login`, {
+    const res = await fetch(`${API_URL}/auth/login`, {
         method: 'POST',
         headers,
         body: formBody
@@ -88,7 +88,7 @@ function logout() {
 }
 
 async function loadTasks(completed = null) {
-    let url = 'tasks/';
+    let url = '/tasks/';
     if (completed !== null) url += `?completed=${completed}`;
     
     const res = await apiRequest(url);
@@ -118,7 +118,7 @@ async function createTask() {
     const description = document.getElementById('task-desc').value;
     if (!title) return alert('Title is required');
 
-    const res = await apiRequest('tasks/', 'POST', { title, description });
+    const res = await apiRequest('/tasks/', 'POST', { title, description });
     if (res.ok) {
         document.getElementById('task-title').value = '';
         document.getElementById('task-desc').value = '';
@@ -127,13 +127,13 @@ async function createTask() {
 }
 
 async function toggleTask(id, currentStatus) {
-    const res = await apiRequest(`tasks/${id}`, 'PUT', { is_completed: !currentStatus });
+    const res = await apiRequest(`/tasks/${id}`, 'PUT', { is_completed: !currentStatus });
     if (res.ok) loadTasks();
 }
 
 async function deleteTask(id) {
     if (!confirm('Delete this task?')) return;
-    const res = await apiRequest(`tasks/${id}`, 'DELETE');
+    const res = await apiRequest(`/tasks/${id}`, 'DELETE');
     if (res.ok) loadTasks();
 }
 
