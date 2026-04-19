@@ -3,8 +3,16 @@ from fastapi.staticfiles import StaticFiles
 from sqlmodel import SQLModel
 from .core.database import engine
 from .api import auth, tasks
-
+from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI(title="Task Manager API")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Database initialization
 SQLModel.metadata.create_all(engine)
