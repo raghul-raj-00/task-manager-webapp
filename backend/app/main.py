@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from fastapi.staticfiles import StaticFiles
+#from fastapi.staticfiles import StaticFiles
 from sqlmodel import SQLModel
 from .core.database import engine
 from .api import auth, tasks
@@ -22,7 +22,7 @@ app.include_router(auth.router, prefix="/auth", tags=["Authentication"])
 app.include_router(tasks.router, prefix="/tasks", tags=["Tasks"])
 
 # Serve frontend static files
-app.mount("/", StaticFiles(directory="frontend/static", html=True), name="static")
+#app.mount("/", StaticFiles(directory="frontend/static", html=True), name="static")
 
 if __name__ == "__main__":
     import uvicorn
