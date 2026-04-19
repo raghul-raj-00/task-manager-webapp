@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <h1>Task Manager</h1>
+        <div id="auth-links">
+            <a href="#" onclick="showPage('login')">Login</a>
+            <a href="#" onclick="showPage('register')">Register</a>
+            <span id="user-info" style="display:none">
+                Welcome, <span id="username-display"></span>
+                <button onclick="logout()">Logout</button>
+            </span>
+        </div>
+    </nav>
+
+    <main>
+        <section id="page-login" class="page">
+            <h2>Login</h2>
+            <form id="login-form">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="#" onclick="showPage('register')">Register</a></p>
+        </section>
+
+        <section id="page-register" class="page" style="display:none">
+            <h2>Register</h2>
+            <form id="register-form">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Register</button>
+            </form>
+            <p>Already have an account? <a href="#" onclick="showPage('login')">Login</a></p>
+        </section>
+
+        <section id="page-tasks" class="page" style="display:none">
+            <h2>My Tasks</h2>
+            <div class="task-form">
+                <input type="text" id="task-title" placeholder="Task title" required>
+                <input type="text" id="task-desc" placeholder="Description">
+                <button onclick="createTask()">Add Task</button>
+            </div>
+            <div class="filters">
+                <button onclick="loadTasks(false)">All</button>
+                <button onclick="loadTasks(false)">Pending</button>
+                <button onclick="loadTasks(true)">Completed</button>
+            </div>
+            <ul id="task-list"></ul>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

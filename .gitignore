@@ -1,0 +1,47 @@
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+
+venv/
+env/
+.venv/
+
+# FastAPI / Backend
+
+*.log
+.env
+
+# SQLite database (your file)
+database.db
+
+
+# Cache folders
+
+**/__pycache__/
+
+
+# VS Code / IDE
+.vscode/
+.idea/
+
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# History folder (IMPORTANT - your project has this)
+.history/
+
+
+# Node (if you expand frontend later)
+node_modules/
+dist/
+build/
+
+
+# Misc
+*.sqlite3

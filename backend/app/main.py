@@ -1,0 +1,21 @@
+from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+from sqlmodel import SQLModel
+from .core.database import engine
+from .api import auth, tasks
+
+app = FastAPI(title="Task Manager API")
+
+# Database initialization
+SQLModel.metadata.create_all(engine)
+
+# Routes
+app.include_router(auth.router, prefix="/auth", tags=["Authentication"])
+app.include_router(tasks.router, prefix="/tasks", tags=["Tasks"])
+
+# Serve frontend static files
+app.mount("/", StaticFiles(directory="frontend/static", html=True), name="static")
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("app.main:app", host="0.0.0.0", port=8000, reload=True)
