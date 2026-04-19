@@ -1,4 +1,4 @@
-const API_URL = 'https://task-manager-webapp-31wl.onrender.com';
+const API_URL = 'https://task-manager-webapp-31wl.onrender.com/';
 
 function showPage(pageId) {
     document.querySelectorAll('.page').forEach(p => p.style.display = 'none');

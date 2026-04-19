@@ -5,7 +5,7 @@ from .core.database import engine
 from .api import auth, tasks
 from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI(title="Task Manager API")
-origins = ["https://task-manager-webapp-31wl.onrender.com"]
+origins = ["https://task-manager-webapp-chi.vercel.app"]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
